@@ -2,12 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>💛 Carta para Ti 💛</title>
+  <title>💌 Carta Especial</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: #fffbea;
+      background: #fffaf0;
       font-family: 'Georgia', serif;
       display: flex;
       justify-content: center;
@@ -18,8 +18,8 @@
 
     .contenedor {
       position: relative;
-      width: 450px;
-      height: 350px;
+      width: 320px;
+      height: 260px;
       perspective: 1000px;
     }
 
@@ -41,7 +41,7 @@
       width: 100%;
       height: 100%;
       backface-visibility: hidden;
-      border-radius: 15px;
+      border-radius: 10px;
     }
 
     .frente {
@@ -49,28 +49,33 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 60px;
+      font-size: 50px;
       color: white;
-      box-shadow: 0 0 15px #ffeb3b;
+      box-shadow: 0 0 15px #fcd116;
     }
 
     .atras {
-      background: #fffdf0;
+      background: #fff;
       transform: rotateY(180deg);
-      padding: 25px;
-      box-sizing: border-box;
-      display: flex;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
       text-align: center;
+      padding: 20px;
+      display: flex;
       font-size: 16px;
-      color: #b8860b;
+      color: #8b6508;
       box-shadow: 0 0 20px #ffd700;
     }
 
-    .mensaje p {
-      margin: 8px 0;
-      line-height: 1.5;
+    .mensaje {
+      background: #fff8dc;
+      border: 2px solid #ffd700;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 10px #fcd116;
+      font-size: 15px;
+      line-height: 1.6;
     }
 
     .corazon {
@@ -82,8 +87,7 @@
       animation: flotar 4s linear infinite;
     }
 
-    .corazon::before,
-    .corazon::after {
+    .corazon::before, .corazon::after {
       content: '';
       position: absolute;
       width: 20px;
@@ -120,7 +124,7 @@
 
 <div class="contenedor">
   <div class="carta" onclick="abrirCarta()">
-    <div class="frente">💌</div>
+    <div class="frente">💛</div>
     <div class="atras">
       <h2>💛 Para ti 💛</h2>
       <div class="mensaje">
@@ -144,7 +148,7 @@
           Gracias por tanto,<br>
           y gracias a Dios por ti. 🙏✨
         </p>
-        <p><strong>— Jero 💛</strong></p>
+        <p style="margin-top: 10px;"><strong>Con amor, Jero 💛</strong></p>
       </div>
     </div>
   </div>
@@ -158,12 +162,12 @@
   }
 
   function lanzarCorazones() {
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 20; i++) {
       const corazon = document.createElement('div');
       corazon.className = 'corazon';
       corazon.style.left = Math.random() * window.innerWidth + 'px';
       corazon.style.bottom = '0px';
-      corazon.style.animationDelay = Math.random() * 3 + 's';
+      corazon.style.animationDelay = Math.random() * 4 + 's';
       document.body.appendChild(corazon);
       setTimeout(() => {
         corazon.remove();
