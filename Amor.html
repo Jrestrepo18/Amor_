@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>💌 Carta Especial</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fffaf0;
+      font-family: 'Georgia', serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .contenedor {
+      position: relative;
+      width: 320px;
+      height: 260px;
+      perspective: 1000px;
+    }
+
+    .carta {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+      cursor: pointer;
+    }
+
+    .carta.volteada {
+      transform: rotateY(180deg);
+    }
+
+    .frente, .atras {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+    }
+
+    .frente {
+      background: #ffd700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 50px;
+      color: white;
+      box-shadow: 0 0 15px #fcd116;
+    }
+
+    .atras {
+      background: #fff;
+      transform: rotateY(180deg);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      font-size: 16px;
+      color: #8b6508;
+      box-shadow: 0 0 20px #ffd700;
+    }
+
+    .mensaje {
+      background: #fff8dc;
+      border: 2px solid #ffd700;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 10px #fcd116;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .corazon {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ffd700;
+      transform: rotate(45deg);
+      animation: flotar 4s linear infinite;
+    }
+
+    .corazon::before, .corazon::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ffd700;
+      border-radius: 50%;
+    }
+
+    .corazon::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .corazon::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes flotar {
+      0% {
+        bottom: 0;
+        opacity: 1;
+        transform: translateX(0) rotate(45deg);
+      }
+      100% {
+        bottom: 100vh;
+        opacity: 0;
+        transform: translateX(100px) rotate(45deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="contenedor">
+  <div class="carta" onclick="abrirCarta()">
+    <div class="frente">💛</div>
+    <div class="atras">
+      <h2>💛 Para ti 💛</h2>
+      <div class="mensaje">
+        <p><em>Mi amor,</em></p>
+        <p>
+          Hice esto para recordarte<br>
+          lo mucho que te amo,<br>
+          que me importas<br>
+          y que siempre pienso en ti. 💛
+        </p>
+        <p>
+          Solo deseo más momentos contigo,<br>
+          más risas y más historias que contar. 💫
+        </p>
+        <p>
+          Te amo, y quiero que siempre te sientas:<br>
+          <strong>amada</strong>, <strong>respetada</strong>, <strong>admirada</strong><br>
+          y la mujer más linda de este mundo. 🌍💛
+        </p>
+        <p>
+          Gracias por tanto,<br>
+          y gracias a Dios por ti. 🙏✨
+        </p>
+        <p style="margin-top: 10px;"><strong>Con amor, Jero 💛</strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function abrirCarta() {
+    const carta = document.querySelector('.carta');
+    carta.classList.add('volteada');
+    lanzarCorazones();
+  }
+
+  function lanzarCorazones() {
+    for (let i = 0; i < 20; i++) {
+      const corazon = document.createElement('div');
+      corazon.className = 'corazon';
+      corazon.style.left = Math.random() * window.innerWidth + 'px';
+      corazon.style.bottom = '0px';
+      corazon.style.animationDelay = Math.random() * 4 + 's';
+      document.body.appendChild(corazon);
+      setTimeout(() => {
+        corazon.remove();
+      }, 4000);
+    }
+  }
+</script>
+
+</body>
+</html>
